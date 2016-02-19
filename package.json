@@ -1,0 +1,23 @@
+{
+  "name": "algojs",
+  "version": "0.1.0",
+  "description": "Coursera Algorithms https://www.coursera.org/course/algs4partI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angiolep/algojs.git"
+  },
+  "keywords": [
+    "algo",
+    "algorithms"
+  ],
+  "author": "Paolo Angioletti",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/angiolep/algojs/issues"
+  },
+  "homepage": "https://github.com/angiolep/algojs#readme"
+}
