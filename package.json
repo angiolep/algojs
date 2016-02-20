@@ -1,11 +1,8 @@
 {
   "name": "algojs",
-  "version": "0.1.0",
-  "description": "Coursera Algorithms https://www.coursera.org/course/algs4partI",
+  "version": "0.2.0",
+  "description": "It provides Javascript implementation of fundamental data types, algorithms, and data structures as treated in the 'Algorithms, Part I' course (see https://www.coursera.org/course/algs4partI)",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angiolep/algojs.git"
@@ -19,5 +16,15 @@
   "bugs": {
     "url": "https://github.com/angiolep/algojs/issues"
   },
-  "homepage": "https://github.com/angiolep/algojs#readme"
+  "homepage": "https://github.com/angiolep/algojs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jsdoc": "^3.4.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "mocha": "^2.4.5"
+  }
 }
