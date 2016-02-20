@@ -24,10 +24,23 @@ module.exports = {
         expect(array).to.deep.equal([]);
       },
       'should sort the given array as side effect': function() {
-        var array = [12, 6, 2, 15, 9];
+        var array = [6,5,3,1,8,7,2,4];
         algojs.selectionSort(array);
-        expect(array).to.deep.equal([2, 6, 9, 12, 15]);
+        expect(array).to.deep.equal([1,2,3,4,5,6,7,8]);
+      }
+    },
+    '#insertionSort': {
+      'should do nothing when empty array is given': function() {
+        var array = [];
+        algojs.insertionSort(array);
+        expect(array).to.deep.equal([]);
+      },
+      'should sort the given array as side effect': function() {
+        var array = [6,5,3,1,8,7,2,4];
+        algojs.insertionSort(array);
+        expect(array).to.deep.equal([1,2,3,4,5,6,7,8]);
       }
     }
+    //
   }
 };
