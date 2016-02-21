@@ -52,7 +52,22 @@ module.exports = {
         algojs.shellSort(arr);
         expect(arr).to.deep.equal([1,2,3,4,5,6,7,8]);
       }
+    },
+    '#knuthShuffle': {
+      'should do nothing when empty arr is given': function() {
+        var arr = [];
+        algojs.knuthShuffle(arr);
+        expect(arr).to.deep.equal([]);
+      },
+      'should shuffle the given arr as side effect': function() {
+        var arr = [6,5,3,1,8,7,2,4];
+        algojs.knuthShuffle(arr);
+        expect(arr).to.have.length(8);
+        expect(arr).to.include.members([1,2,3,4,5,6,7,8]);
+
+      }
     }
+
     //
   }
 };
