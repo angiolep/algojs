@@ -1,6 +1,6 @@
 {
   "name": "algojs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "It provides Javascript implementation of fundamental data types, algorithms, and data structures as treated in the 'Algorithms, Part I' course (see https://www.coursera.org/course/algs4partI)",
   "main": "index.js",
   "repository": {

@@ -5,26 +5,23 @@
  */
 
 
-function requireSameType(a,b) {
-  if (typeof(a) !== typeof(b))
+function less(a, b) {
+  if (typeof(a) !== typeof(b)) {
     throw "elements must have same type";
-}
-
-
-function compare(a, b) {
-  requireSameType(a,b);
+  }
   if (typeof(a) === 'number') {
-    return (a < b) ? -1 : ((a === b) ? 0 : 1);
+    return (a < b);
   }
   // TODO else ... other types to compare here
 }
 
 
-function swap(a, i, j) {
-  if (a && Array.isArray(a)) {
-    var tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
+
+function exch(arr, i, j) {
+  if (arr && Array.isArray(arr)) {
+    var tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
   }
 }
 
@@ -35,19 +32,19 @@ module.exports = {
    * It selects the index of the smallest element of the given array
    * from the given start index to the given end index.
    *
-   * @param {Object} a is the array of elements to be compared
+   * @param {Object} arr is the array of elements to be compared
    * @param {Number} start is the start index (0 by default)
    * @param {Number} end is the end index ((array.length - 1) by default)
    * @returns {Number} the index of the smallest element of the given array
    */
-  indexOfMinimum: function (a, start, end) {
-    if (a && Array.isArray(a) && a.length > 0) {
+  min: function (arr, start, end) {
+    if (arr && Array.isArray(arr) && arr.length > 0) {
       var min = start || 0,
           start = start || 0,
-          end = end || a.length;
-      for (var i = start + 1; i < end; i++) {
-        if (compare(a[i], a[min]) === -1) {
-          min = i;
+          end = end || arr.length;
+      for (var j = start + 1; j < end; j++) {
+        if (less(arr[j], arr[min])) {
+          min = j;
         }
       }
       return min;
@@ -57,19 +54,15 @@ module.exports = {
   /**
    * It sorts the given array as side effect, executing the selection sort algorithm.
    *
-   * @param {Object} a the array being sorted
+   * @param {Object} arr the array being sorted
    * @see https://en.wikipedia.org/wiki/Selection_sort
    */
-  selectionSort: function(a) {
-    if (a && Array.isArray(a)) {
-      // TODO var cloned = clone(array);
-      var min,
-          start = 0;
-      for (; start < a.length; start++) {
-        min = this.indexOfMinimum(a, start);
-        if (compare(a[start], a[min]) == 1) {
-          swap(a, start, min);
-        }
+  selectionSort: function(arr) {
+    if (arr && Array.isArray(arr)) {
+      var min;
+      for (var i = 0; i < arr.length; i++) {
+        min = this.min(arr, i);
+        exch(arr, i, min);
       }
     }
   },
@@ -78,22 +71,44 @@ module.exports = {
   /**
    * It sorts the given array as side effect, executing the insertion sort algorithm.
    *
-   * @param {Object} a the array being sorted
+   * @param {Object} arr the array being sorted
    * @see https://en.wikipedia.org/wiki/Insertion_sort
    */
-  insertionSort: function(a) {
-    if (a && Array.isArray(a)) {
-      var j,
-          i = 1;
-      for (; i < a.length; i++) {
-        // in iteration i swap a[i] with each larger entry to its left
-        j = i - 1;
-        while (j >= 0 && a[i] < a[j]) {
-          swap(a, i, j);
+  insertionSort: function(arr) {
+    if (arr && Array.isArray(arr)) {
+      var j;
+      for (var i = 0; i < arr.length; i++) {
+        // in iteration i, swap arr[i] with each larger entry to its left
+        j = i;
+        while(j > 0 && less(arr[j], arr[j-1])) {
+          exch(arr, j, j - 1);
           j = j - 1;
-          i = i - 1;
         }
       }
+    }
+  },
+
+  /**
+   * It sorts the given array as side effect, executing the shell sort algorithm.
+   *
+   * @param {Object} arr the array being sorted
+   * @see https://en.wikipedia.org/wiki/Shell_sort
+   */
+  shellSort: function(arr) {
+    var len = arr.length, h = 1, j;
+
+    // 1, 4, 13, 40, 121, 364, ...
+    while (h < len / 3)  { h = h * 3 + 1; }
+
+    while (h >= 1) {
+      for (var i = h; i < arr.length; i++) {
+        j = i;
+        while (j >= h && less(arr[j], arr[j-h])) {
+          exch(arr, j, j-h);
+          j = j - h;
+        }
+      }
+      h = Math.floor(h / 3);
     }
   }
 };
