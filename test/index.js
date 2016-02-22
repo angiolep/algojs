@@ -3,18 +3,27 @@ var expect = require('chai').expect;
 
 module.exports = {
   'algojs':{
-    '#selectMinimum()': {
+    '#selectMinIndex()': {
       'should return undefined when bad input': function() {
-        expect(algojs.min()).to.be.undefined;
-        expect(algojs.min(null)).to.be.undefined;
-        expect(algojs.min('')).to.be.undefined;
-        expect(algojs.min([])).to.be.undefined;
+        expect(algojs.selectMinimumIndex()).to.be.undefined;
+        expect(algojs.selectMinimumIndex(null)).to.be.undefined;
+        expect(algojs.selectMinimumIndex('')).to.be.undefined;
+        expect(algojs.selectMinimumIndex([])).to.be.undefined;
       },
-      'should return the index of the minimum element of the given arr': function () {
-        expect(algojs.min([9, 5, 12, 8, 15, 6, 20])).to.equal(1);
+      'should select the min index ': function () {
+        expect(algojs.selectMinimumIndex([9, 5, 12, 8, 15, 6, 20])).to.equal(1);
       },
-      'should return the index of the minimum element of the given arr from the given start index': function () {
-        expect(algojs.min([9, 5, 12, 8, 15, 6, 20], 2)).to.equal(5);
+      'should select the min index applying the given comparator': function () {
+        var arr = [{x:0, y:10}, {x:3, y:5}, {x:8, y:6}];
+        var compare = function(a, b) {
+          return a.y === b.y ? 0 : ( a.y > b.y ? 1 : -1);
+        };
+        var minIdx = algojs.selectMinimumIndex(arr, compare);
+        expect(minIdx).to.equal(1);
+      },
+      'should select the min index from the given start index': function () {
+        var arr = [9, 5, 12, 8, 15, 6, 20];
+        expect(algojs.selectMinimumIndex(arr, null, 2)).to.equal(5);
       }
     },
     '#selectionSort()': {
