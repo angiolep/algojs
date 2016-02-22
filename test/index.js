@@ -32,6 +32,11 @@ module.exports = {
         algojs.selectionSort(arr);
         expect(arr).to.deep.equal([]);
       },
+      'should do nothing when arr with single element is given': function() {
+        var arr = [34];
+        algojs.selectionSort(arr);
+        expect(arr).to.deep.equal([34]);
+      },
       'should sort the given arr as side effect': function() {
         var arr = [6,5,3,1,8,7,2,4];
         algojs.selectionSort(arr);
@@ -43,6 +48,11 @@ module.exports = {
         var arr = [];
         algojs.insertionSort(arr);
         expect(arr).to.deep.equal([]);
+      },
+      'should do nothing when arr with single element is given': function() {
+        var arr = [34];
+        algojs.insertionSort(arr);
+        expect(arr).to.deep.equal([34]);
       },
       'should sort the given arr as side effect': function() {
         var arr = [6,5,3,1,8,7,2,4];
