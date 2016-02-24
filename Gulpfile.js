@@ -4,7 +4,7 @@ var jshint = require('gulp-jshint');
 
 
 gulp.task('lint', function() {
-  gulp.src('./index.js')
+  gulp.src('./lib/*su.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -15,7 +15,7 @@ gulp.task('test', function() {
     ui: 'exports',
     reporter: 'spec'
   };
-  return gulp.src('test/index.js', {read: false})
+  return gulp.src('test/*.js', {read: false})
       .pipe(mocha(opts));
 });
 
