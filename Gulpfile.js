@@ -4,7 +4,7 @@ var jshint = require('gulp-jshint');
 
 
 gulp.task('lint', function() {
-  gulp.src('./lib/*su.js')
+  gulp.src('./index.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -19,6 +19,3 @@ gulp.task('test', function() {
       .pipe(mocha(opts));
 });
 
-
-
-//gulp.task('default', ['lint', 'test']);
