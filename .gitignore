@@ -32,7 +32,7 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# JsDoc output
-out/
-
+# IntelliJ
+.idea
 *.iml
+tmp/
